@@ -1,5 +1,5 @@
-MongoDB ExpressJS ReactJS NodeJS\n
-React+Redux\n
-Bootstrap
-JWT authentication
-MVC pattern
+<h1>MongoDB ExpressJS ReactJS NodeJS</h1>
+<p>React+Redux</p>
+<p>Bootstrap</p>
+<p>JWT authentication</p>
+<p>MVC pattern</p>
