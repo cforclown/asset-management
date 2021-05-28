@@ -1,9 +1,14 @@
 const mongoose = require("mongoose");
 
-const vendorSchema = new mongoose.Schema({
+const buildingSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+    default: null,
+  },
+  desc: {
+    type: String,
+    required: false,
     default: null,
   },
   city: {
@@ -21,17 +26,12 @@ const vendorSchema = new mongoose.Schema({
     required: false,
     default: null,
   },
-  accountManagerName: {
-    type: String,
-    required: false,
-    default: null,
-  },
-  accountManagerPhone: {
+  address: {
     type: String,
     required: false,
     default: null,
   },
 });
 
-exports.Schema = vendorSchema;
-exports.Model = mongoose.model("Vendor", vendorSchema, "vendor");
+exports.Schema = buildingSchema;
+exports.Model = mongoose.model("Building", buildingSchema, "building");
