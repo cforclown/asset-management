@@ -1,17 +1,17 @@
 const express = require("express");
 const global = require("../../../global/global");
-const assetVendorController = require("../../../database/controller/assetVendor.controller");
+const buildingController = require("../../../database/controller/building.controller");
 
 const Router = express.Router();
 
 Router.get("/", async (req, res) => {
   try {
-    const data = await assetVendorController.GetAssetVendor();
+    const data = await buildingController.GetBuilding();
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Asset Vendor List not found"));
+        .send(global.Response(null, "Building List not found"));
     }
 
     res.send(global.Response(data));
@@ -21,20 +21,20 @@ Router.get("/", async (req, res) => {
   }
 });
 
-Router.get("/:assetVendorId", async (req, res) => {
+Router.get("/:buildingId", async (req, res) => {
   try {
-    if (!req.params.assetVendorId) {
-      return res.status(400).send("Asset Vendor id not found");
+    if (!req.params.buildingId) {
+      return res.status(400).send("Building id not found");
     }
 
-    const data = await assetVendorController.GetAssetVendorById(
-      req.params.assetVendorId
+    const data = await buildingController.GetBuildingById(
+      req.params.buildingId
     );
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Asset Vendor not found"));
+        .send(global.Response(null, "Building not found"));
     }
 
     res.send(global.Response(data));
@@ -47,18 +47,18 @@ Router.get("/:assetVendorId", async (req, res) => {
 Router.post("/", async (req, res) => {
   try {
     if (!req.body.params) {
-      return res.status(400).send("Asset Vendor parameter not found");
+      return res.status(400).send("Building parameter not found");
     }
     if (!req.body.params.name) {
       return res.status(400).send("Name not found");
     }
 
-    const data = await assetVendorController.InsertAssetVendor(req.body);
+    const data = await buildingController.InsertBuilding(req.body);
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Asset Vendor not found"));
+        .send(global.Response(null, "Building not found"));
     }
 
     res.send(global.Response(data));
@@ -71,21 +71,21 @@ Router.post("/", async (req, res) => {
 Router.put("/", async (req, res) => {
   try {
     if (!req.body.params) {
-      return res.status(400).send("Asset Vendor parameter not found");
+      return res.status(400).send("Building parameter not found");
     }
-    if (!req.body.params.assetVendorId) {
-      return res.status(400).send("Asset Vendor id not found");
+    if (!req.body.params.buildingId) {
+      return res.status(400).send("Building id not found");
     }
     if (!req.body.params.name) {
       return res.status(400).send("Name not found");
     }
 
-    const data = await assetVendorController.UpdateAssetVendor(req.body);
+    const data = await buildingController.UpdateBuilding(req.body);
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Asset Vendor not found"));
+        .send(global.Response(null, "Building not found"));
     }
 
     res.send(global.Response(data));
@@ -95,20 +95,20 @@ Router.put("/", async (req, res) => {
   }
 });
 
-Router.delete("/:assetVendorId", async (req, res) => {
+Router.delete("/:buildingId", async (req, res) => {
   try {
-    if (!req.params.assetVendorId) {
-      return res.status(400).send("Vendor id not found");
+    if (!req.params.buildingId) {
+      return res.status(400).send("Building id not found");
     }
 
-    const data = await assetVendorController.DeleteAssetVendor(
-      req.params.assetVendorId
+    const data = await buildingController.DeleteAssetVendor(
+      req.params.buildingId
     );
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Asset Vendor not found"));
+        .send(global.Response(null, "Building not found"));
     }
 
     res.send(global.Response(data));
