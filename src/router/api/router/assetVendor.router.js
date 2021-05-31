@@ -1,17 +1,17 @@
 const express = require("express");
 const global = require("../../../global/global");
-const vendorController = require("../../../database/controller/vendor.controller");
+const assetVendorController = require("../../../database/controller/assetVendor.controller");
 
 const Router = express.Router();
 
 Router.get("/", async (req, res) => {
   try {
-    const data = await vendorController.GetVendor();
+    const data = await assetVendorController.GetAssetVendor();
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Vendor List not found"));
+        .send(global.Response(null, "Asset Vendor List not found"));
     }
 
     res.send(global.Response(data));
@@ -21,18 +21,20 @@ Router.get("/", async (req, res) => {
   }
 });
 
-Router.get("/:vendorId", async (req, res) => {
+Router.get("/:assetVendorId", async (req, res) => {
   try {
-    if (!req.params.vendorId) {
-      return res.status(400).send("Vendor id not found");
+    if (!req.params.assetVendorId) {
+      return res.status(400).send("Asset Vendor id not found");
     }
 
-    const data = await vendorController.GetVendorById(req.params.vendorId);
+    const data = await assetVendorController.GetAssetVendorById(
+      req.params.assetVendorId
+    );
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Vendor not found"));
+        .send(global.Response(null, "Asset Vendor not found"));
     }
 
     res.send(global.Response(data));
@@ -45,18 +47,18 @@ Router.get("/:vendorId", async (req, res) => {
 Router.post("/", async (req, res) => {
   try {
     if (!req.body.params) {
-      return res.status(400).send("Vendor parameter not found");
+      return res.status(400).send("Asset Vendor parameter not found");
     }
     if (!req.body.params.name) {
       return res.status(400).send("Name not found");
     }
 
-    const data = await vendorController.InsertVendor(req.body);
+    const data = await assetVendorController.InsertAssetVendor(req.body);
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Vendor not found"));
+        .send(global.Response(null, "Asset Vendor not found"));
     }
 
     res.send(global.Response(data));
@@ -69,21 +71,21 @@ Router.post("/", async (req, res) => {
 Router.put("/", async (req, res) => {
   try {
     if (!req.body.params) {
-      return res.status(400).send("Vendor parameter not found");
+      return res.status(400).send("Asset Vendor parameter not found");
     }
-    if (!req.body.params.vendorId) {
-      return res.status(400).send("Vendor id not found");
+    if (!req.body.params.assetVendorId) {
+      return res.status(400).send("Asset Vendor id not found");
     }
     if (!req.body.params.name) {
       return res.status(400).send("Name not found");
     }
 
-    const data = await vendorController.UpdateVendor(req.body);
+    const data = await assetVendorController.UpdateAssetVendor(req.body);
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Vendor not found"));
+        .send(global.Response(null, "Asset Vendor not found"));
     }
 
     res.send(global.Response(data));
@@ -93,18 +95,20 @@ Router.put("/", async (req, res) => {
   }
 });
 
-Router.delete("/:vendorId", async (req, res) => {
+Router.delete("/:assetVendorId", async (req, res) => {
   try {
-    if (!req.params.vendorId) {
+    if (!req.params.assetVendorId) {
       return res.status(400).send("vendor id not found");
     }
 
-    const data = await vendorController.DeleteVendor(req.params.vendorId);
+    const data = await assetVendorController.DeleteAssetVendor(
+      req.params.assetVendorId
+    );
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Vendor not found"));
+        .send(global.Response(null, "Asset Vendor not found"));
     }
 
     res.send(global.Response(data));
