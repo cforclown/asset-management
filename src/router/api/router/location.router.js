@@ -1,17 +1,17 @@
 const express = require("express");
 const global = require("../../../global/global");
-const buildingController = require("../../../database/controller/building.controller");
+const locationController = require("../../../database/controller/location.controller");
 
 const Router = express.Router();
 
 Router.get("/", async (req, res) => {
   try {
-    const data = await buildingController.GetBuilding();
+    const data = await locationController.GetLocation();
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Building List not found"));
+        .send(global.Response(null, "Location List not found"));
     }
 
     res.send(global.Response(data));
@@ -21,20 +21,20 @@ Router.get("/", async (req, res) => {
   }
 });
 
-Router.get("/:buildingId", async (req, res) => {
+Router.get("/:locationId", async (req, res) => {
   try {
-    if (!req.params.buildingId) {
-      return res.status(400).send("Building id not found");
+    if (!req.params.locationId) {
+      return res.status(400).send("Location id not found");
     }
 
-    const data = await buildingController.GetBuildingById(
-      req.params.buildingId
+    const data = await locationController.GetLocationById(
+      req.params.locationId
     );
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Building not found"));
+        .send(global.Response(null, "Location not found"));
     }
 
     res.send(global.Response(data));
@@ -47,18 +47,18 @@ Router.get("/:buildingId", async (req, res) => {
 Router.post("/", async (req, res) => {
   try {
     if (!req.body.params) {
-      return res.status(400).send("Building parameter not found");
+      return res.status(400).send("Location parameter not found");
     }
     if (!req.body.params.name) {
       return res.status(400).send("Name not found");
     }
 
-    const data = await buildingController.InsertBuilding(req.body);
+    const data = await locationController.InsertLocation(req.body);
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Building not found"));
+        .send(global.Response(null, "Location not found"));
     }
 
     res.send(global.Response(data));
@@ -71,21 +71,21 @@ Router.post("/", async (req, res) => {
 Router.put("/", async (req, res) => {
   try {
     if (!req.body.params) {
-      return res.status(400).send("Building parameter not found");
+      return res.status(400).send("Location parameter not found");
     }
-    if (!req.body.params.buildingId) {
-      return res.status(400).send("Building id not found");
+    if (!req.body.params.locationId) {
+      return res.status(400).send("Location id not found");
     }
     if (!req.body.params.name) {
       return res.status(400).send("Name not found");
     }
 
-    const data = await buildingController.UpdateBuilding(req.body);
+    const data = await locationController.UpdateLocation(req.body);
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Building not found"));
+        .send(global.Response(null, "Location not found"));
     }
 
     res.send(global.Response(data));
@@ -95,18 +95,18 @@ Router.put("/", async (req, res) => {
   }
 });
 
-Router.delete("/:buildingId", async (req, res) => {
+Router.delete("/:locationId", async (req, res) => {
   try {
-    if (!req.params.buildingId) {
-      return res.status(400).send("Building id not found");
+    if (!req.params.locationId) {
+      return res.status(400).send("Location id not found");
     }
 
-    const data = await buildingController.DeleteBuilding(req.params.buildingId);
+    const data = await locationController.DeleteLocation(req.params.locationId);
 
     if (!data) {
       return res.send
         .status(404)
-        .send(global.Response(null, "Building not found"));
+        .send(global.Response(null, "Location not found"));
     }
 
     res.send(global.Response(data));
