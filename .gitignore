@@ -5,7 +5,7 @@
 dump-log/
 
 # development environment variables
-development.env
+development-local.env
 
 # staging build
 staging/
