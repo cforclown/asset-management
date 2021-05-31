@@ -41,7 +41,7 @@ exports.InsertBuilding = async function (params) {
 };
 
 exports.UpdateBuilding = async function (params) {
-  if (!params._id) {
+  if (!params.buildingId) {
     return global.ErrorBadRequest("Building id not found");
   }
   if (!params.name) {
@@ -50,7 +50,7 @@ exports.UpdateBuilding = async function (params) {
 
   const data = await buildingModel.updateOne(
     {
-      _id: params._id,
+      _id: params.buildingId,
     },
     {
       $set: {

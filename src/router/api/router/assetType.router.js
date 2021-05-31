@@ -73,7 +73,7 @@ Router.put("/", async (req, res) => {
     if (!req.body.params) {
       return res.status(400).send("Asset Type parameter not found");
     }
-    if (!req.body.params._id) {
+    if (!req.body.params.assetTypeId) {
       return res.status(400).send("Asset Type id not found");
     }
     if (!req.body.params.name) {

@@ -51,7 +51,7 @@ exports.InsertAssetVendor = async function (params) {
 };
 
 exports.UpdateAssetVendor = async function (params) {
-  if (!params._id) {
+  if (!params.assetVendorId) {
     return global.ErrorBadRequest("Asset Vendor id not found");
   }
   if (!params.name) {
@@ -60,7 +60,7 @@ exports.UpdateAssetVendor = async function (params) {
 
   const data = await assetVendorModel.updateOne(
     {
-      _id: params._id,
+      _id: params.assetVendorId,
     },
     {
       $set: {

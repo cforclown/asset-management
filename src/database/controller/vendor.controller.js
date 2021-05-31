@@ -41,7 +41,7 @@ exports.InsertVendor = async function (params) {
 };
 
 exports.UpdateVendor = async function (params) {
-  if (!params._id) {
+  if (!params.vendorId) {
     return global.ErrorBadRequest("Vendor id not found");
   }
   if (!params.name) {
@@ -50,7 +50,7 @@ exports.UpdateVendor = async function (params) {
 
   const data = await vendorModel.updateOne(
     {
-      _id: params._id,
+      _id: params.vendorId,
     },
     {
       $set: {

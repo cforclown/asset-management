@@ -41,7 +41,7 @@ exports.InsertLocation = async function (params) {
 };
 
 exports.UpdateLocation = async function (params) {
-  if (!params._id) {
+  if (!params.locationId) {
     return global.ErrorBadRequest("Location id not found");
   }
   if (!params.name) {
@@ -50,7 +50,7 @@ exports.UpdateLocation = async function (params) {
 
   const data = await locationModel.updateOne(
     {
-      _id: params._id,
+      _id: params.locationId,
     },
     {
       $set: {

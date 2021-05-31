@@ -41,7 +41,7 @@ exports.InsertAssetSuperType = async function (params) {
 };
 
 exports.UpdateAssetSuperType = async function (params) {
-  if (!params._id) {
+  if (!params.assetSuperTypeId) {
     return global.ErrorBadRequest("Asset Super Type id not found");
   }
   if (!params.name) {
@@ -50,7 +50,7 @@ exports.UpdateAssetSuperType = async function (params) {
 
   const data = await assetSuperTypeModel.updateOne(
     {
-      _id: params._id,
+      _id: params.assetSuperTypeId,
     },
     {
       $set: {

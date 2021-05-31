@@ -41,7 +41,7 @@ exports.InsertEmployee = async function (params) {
 };
 
 exports.UpdateEmployee = async function (params) {
-  if (!params._id) {
+  if (!params.employeeId) {
     return global.ErrorBadRequest("Employee id not found");
   }
   if (!params.name) {
@@ -50,7 +50,7 @@ exports.UpdateEmployee = async function (params) {
 
   const data = await employeeModel.updateOne(
     {
-      _id: params._id,
+      _id: params.employeeId,
     },
     {
       $set: {

@@ -41,7 +41,7 @@ exports.InsertAsset = async function (params) {
 };
 
 exports.UpdateAsset = async function (params) {
-  if (!params._id) {
+  if (!params.assetId) {
     return global.ErrorBadRequest("Asset id not found");
   }
   if (!params.name) {
@@ -50,7 +50,7 @@ exports.UpdateAsset = async function (params) {
 
   const data = await assetModel.updateOne(
     {
-      _id: params._id,
+      _id: params.assetId,
     },
     {
       $set: {
