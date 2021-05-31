@@ -62,7 +62,7 @@ exports.UpdateAssetSuperType = async function (params) {
   return data;
 };
 
-exports.DeleteVendor = async function (assetSuperTypeId) {
+exports.DeleteAssetSuperType = async function (assetSuperTypeId) {
   if (!assetSuperTypeId) {
     return global.ErrorBadRequest("Asset Super Type id not found");
   }
