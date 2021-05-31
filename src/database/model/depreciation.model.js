@@ -7,7 +7,7 @@ const depreciationSchema = new mongoose.Schema({
     default: null,
   },
   duration: {
-    type: String,
+    type: Number,
     required: false,
     default: null,
   },

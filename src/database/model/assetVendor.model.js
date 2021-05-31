@@ -19,7 +19,7 @@ const assetVendorSchema = new mongoose.Schema({
   },
   createdBy: {
     type: mongoose.Types.ObjectId,
-    required: false,
+    required: true,
     ref: "User",
   },
   createdAt: {
@@ -29,7 +29,7 @@ const assetVendorSchema = new mongoose.Schema({
   },
   updatedBy: {
     type: mongoose.Types.ObjectId,
-    required: false,
+    required: true,
     ref: "User",
   },
   updatedAt: {
@@ -39,7 +39,7 @@ const assetVendorSchema = new mongoose.Schema({
   },
   deletedBy: {
     type: mongoose.Types.ObjectId,
-    required: false,
+    required: true,
     ref: "User",
   },
   deletedAt: {
@@ -49,7 +49,7 @@ const assetVendorSchema = new mongoose.Schema({
   },
   isArchived: {
     type: Boolean,
-    required: false,
+    required: true,
     default: false,
   },
 });

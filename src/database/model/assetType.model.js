@@ -13,7 +13,7 @@ const assetTypeSchema = new mongoose.Schema({
   },
   assetSuperType: {
     type: mongoose.Types.ObjectId,
-    required: false,
+    required: true,
     ref: "AssetSuperType",
   },
   defaultDepreciationDuration: {

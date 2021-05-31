@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
   },
   employeeId: {
     type: mongoose.Types.ObjectId,
-    required: true,
+    required: false,
     ref: "Employee",
   },
 });

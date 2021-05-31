@@ -23,12 +23,12 @@ const assetSchema = new mongoose.Schema({
   },
   assetType: {
     type: mongoose.Types.ObjectId,
-    required: false,
+    required: true,
     ref: "Location",
   },
   createdBy: {
     type: mongoose.Types.ObjectId,
-    required: false,
+    required: true,
     ref: "User",
   },
   createdAt: {
@@ -38,7 +38,7 @@ const assetSchema = new mongoose.Schema({
   },
   updatedBy: {
     type: mongoose.Types.ObjectId,
-    required: false,
+    required: true,
     ref: "User",
   },
   updatedAt: {
@@ -48,7 +48,7 @@ const assetSchema = new mongoose.Schema({
   },
   deletedBy: {
     type: mongoose.Types.ObjectId,
-    required: false,
+    required: true,
     ref: "User",
   },
   deletedAt: {

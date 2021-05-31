@@ -13,7 +13,7 @@ const locationSchema = new mongoose.Schema({
   },
   building: {
     type: mongoose.Types.ObjectId,
-    required: false,
+    required: true,
     ref: "Building",
   },
 });
