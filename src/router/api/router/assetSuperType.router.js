@@ -119,3 +119,76 @@ Router.delete("/:assetSuperTypeId", async (req, res) => {
 });
 
 module.exports = Router;
+
+/**
+ * @swagger
+ * /api/assetSuperType:
+ *      get:
+ *          tags:
+ *              - Asset Super Type
+ *          description: Get Asset Super Type List
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *      post:
+ *          tags:
+ *              - Asset Super Type
+ *          description: Create Asset Super Type
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Asset Super Type data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/assetSuperTypeData'
+ *      put:
+ *          tags:
+ *              - Asset Super Type
+ *          description: Update Asset Super Type
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Asset Super Type data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/assetSuperTypeData'
+ * /api/assetSuperType/{assetSuperTypeId}}:
+ *      get:
+ *          tags:
+ *              - Asset Super Type
+ *          description: Get Asset Super Type By Asset Super Type Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: assetSuperTypeId
+ *              in: path
+ *              required: true
+ *      delete:
+ *          tags:
+ *              - Asset Super Type
+ *          description: Delete Asset Super Type By Asset Super Type Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: assetSuperTypeId
+ *              in: path
+ *              required: true
+ */

@@ -117,3 +117,76 @@ Router.delete("/:locationId", async (req, res) => {
 });
 
 module.exports = Router;
+
+/**
+ * @swagger
+ * /api/location:
+ *      get:
+ *          tags:
+ *              - Location
+ *          description: Get Location List
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *      post:
+ *          tags:
+ *              - Location
+ *          description: Create Location
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Location data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/locationData'
+ *      put:
+ *          tags:
+ *              - Location
+ *          description: Update Location
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Location data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/locationData'
+ * /api/location/{locationId}}:
+ *      get:
+ *          tags:
+ *              - Location
+ *          description: Get Location By Location Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: locationId
+ *              in: path
+ *              required: true
+ *      delete:
+ *          tags:
+ *              - Location
+ *          description: Delete Location By Location Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: locationId
+ *              in: path
+ *              required: true
+ */

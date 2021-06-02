@@ -117,3 +117,76 @@ Router.delete("/:assetTypeId", async (req, res) => {
 });
 
 module.exports = Router;
+
+/**
+ * @swagger
+ * /api/assetType:
+ *      get:
+ *          tags:
+ *              - Asset Type
+ *          description: Get Asset Type List
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *      post:
+ *          tags:
+ *              - Asset Type
+ *          description: Create Asset Type
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Asset Type data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/assetTypeData'
+ *      put:
+ *          tags:
+ *              - Asset Type
+ *          description: Update Asset Type
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Asset Type data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/assetTypeData'
+ * /api/assetType/{assetTypeId}}:
+ *      get:
+ *          tags:
+ *              - Asset Type
+ *          description: Get Asset Type By Asset  Type Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: assetTypeId
+ *              in: path
+ *              required: true
+ *      delete:
+ *          tags:
+ *              - Asset Type
+ *          description: Delete Asset Type By Asset  Type Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: assetTypeId
+ *              in: path
+ *              required: true
+ */

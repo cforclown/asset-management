@@ -117,3 +117,76 @@ Router.delete("/:employeeId", async (req, res) => {
 });
 
 module.exports = Router;
+
+/**
+ * @swagger
+ * /api/employee:
+ *      get:
+ *          tags:
+ *              - Employee
+ *          description: Get Employee List
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *      post:
+ *          tags:
+ *              - Employee
+ *          description: Create Employee
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Employee data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/employeeData'
+ *      put:
+ *          tags:
+ *              - Employee
+ *          description: Update Employee
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Employee data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/employeeData'
+ * /api/employee/{employeeId}}:
+ *      get:
+ *          tags:
+ *              - Employee
+ *          description: Get Employee By Employee Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: employeeId
+ *              in: path
+ *              required: true
+ *      delete:
+ *          tags:
+ *              - Employee
+ *          description: Delete Employee By Employee Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: employeeId
+ *              in: path
+ *              required: true
+ */

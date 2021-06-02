@@ -119,3 +119,76 @@ Router.delete("/:assetVendorId", async (req, res) => {
 });
 
 module.exports = Router;
+
+/**
+ * @swagger
+ * /api/assetVendor:
+ *      get:
+ *          tags:
+ *              - Asset Vendor
+ *          description: Get Asset Vendor List
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *      post:
+ *          tags:
+ *              - Asset Vendor
+ *          description: Create Asset Vendor
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Asset Vendor data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/assetVendorData'
+ *      put:
+ *          tags:
+ *              - Asset Vendor
+ *          description: Update Asset Vendor
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Asset Vendor data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/assetVendorData'
+ * /api/assetVendor/{assetVendorId}}:
+ *      get:
+ *          tags:
+ *              - Asset Vendor
+ *          description: Get Asset Vendor By Asset Vendor Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: assetVendorId
+ *              in: path
+ *              required: true
+ *      delete:
+ *          tags:
+ *              - Asset Vendor
+ *          description: Delete Asset Vendor By Asset Vendor Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: assetVendorId
+ *              in: path
+ *              required: true
+ */

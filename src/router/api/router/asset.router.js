@@ -115,3 +115,76 @@ Router.delete("/:assetId", async (req, res) => {
 });
 
 module.exports = Router;
+
+/**
+ * @swagger
+ * /api/asset:
+ *      get:
+ *          tags:
+ *              - Asset
+ *          description: Get Asset List
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *      post:
+ *          tags:
+ *              - Asset
+ *          description: Create Asset
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Asset data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/assetData'
+ *      put:
+ *          tags:
+ *              - Asset
+ *          description: Update Asset
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Asset data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/assetData'
+ * /api/asset/{assetId}}:
+ *      get:
+ *          tags:
+ *              - Asset
+ *          description: Get Asset By Asset Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: assetId
+ *              in: path
+ *              required: true
+ *      delete:
+ *          tags:
+ *              - Asset
+ *          description: Delete Asset By Asset Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: assetId
+ *              in: path
+ *              required: true
+ */

@@ -115,3 +115,76 @@ Router.delete("/:vendorId", async (req, res) => {
 });
 
 module.exports = Router;
+
+/**
+ * @swagger
+ * /api/vendor:
+ *      get:
+ *          tags:
+ *              - Vendor
+ *          description: Get Vendor List
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *      post:
+ *          tags:
+ *              - Vendor
+ *          description: Create Vendor
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Vendor data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/vendorData'
+ *      put:
+ *          tags:
+ *              - Vendor
+ *          description: Update Vendor
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Vendor data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/vendorData'
+ * /api/vendor/{vendorId}}:
+ *      get:
+ *          tags:
+ *              - Vendor
+ *          description: Get Vendor By Vendor Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: vendorId
+ *              in: path
+ *              required: true
+ *      delete:
+ *          tags:
+ *              - Vendor
+ *          description: Delete Vendor By Vendor Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: vendorId
+ *              in: path
+ *              required: true
+ */

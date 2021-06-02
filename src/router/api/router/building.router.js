@@ -117,3 +117,76 @@ Router.delete("/:buildingId", async (req, res) => {
 });
 
 module.exports = Router;
+
+/**
+ * @swagger
+ * /api/building:
+ *      get:
+ *          tags:
+ *              - Building
+ *          description: Get Building List
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *      post:
+ *          tags:
+ *              - Building
+ *          description: Create Building
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Building data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/buildingData'
+ *      put:
+ *          tags:
+ *              - Building
+ *          description: Update Building
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          requestBody:
+ *              description: "Building data"
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/buildingData'
+ * /api/building/{buildingId}}:
+ *      get:
+ *          tags:
+ *              - Building
+ *          description: Get Building By Building Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: buildingId
+ *              in: path
+ *              required: true
+ *      delete:
+ *          tags:
+ *              - Building
+ *          description: Delete Building By Building Id
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *          security:
+ *              - Bearer: []
+ *          parameters:
+ *          -   name: buildingId
+ *              in: path
+ *              required: true
+ */
