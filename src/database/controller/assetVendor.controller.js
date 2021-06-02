@@ -29,8 +29,8 @@ exports.GetAssetVendorById = async function (assetVendorId) {
 };
 
 exports.InsertAssetVendor = async function (params) {
-  if (!params.name) {
-    return global.ErrorBadRequest("Name not found");
+  if (!params.asset) {
+    return global.ErrorBadRequest("Asset not found");
   }
 
   const depreciationData = new depreciationModel({

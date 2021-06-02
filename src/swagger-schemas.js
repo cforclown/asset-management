@@ -225,6 +225,7 @@ module.exports = {
   editBuildingData: {
     type: "object",
     properties: {
+      buildingId: { type: "string" },
       ...buildingData,
     },
   },

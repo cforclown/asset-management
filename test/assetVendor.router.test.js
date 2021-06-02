@@ -14,7 +14,7 @@ const global = require("../src/global/global");
 
 const mongoose = require("mongoose");
 
-const tempVendorId = mongoose.Types.ObjectId();
+const tempAssetVendorId = mongoose.Types.ObjectId();
 
 const userAdmin = {
   username: "admin",
@@ -39,26 +39,44 @@ var sampleUserData = {
   fullname: "haha@gmail.com",
   role: null,
 };
-const sampleVendorData = {
-  _id: tempVendorId,
-  name: "PT. LTE",
-  city: "BATAM",
-  state: "INA",
-  zipCode: "22222",
-  accountManagerName: "Tony",
-  accountManagerPhone: "000099998887777",
+const sampleAssetVendorData = {
+  _id: tempAssetVendorId,
+  asset: mongoose.Types.ObjectId(),
+  vendor: mongoose.Types.ObjectId(),
+  depreciation: {
+    name: "Dummy Depreciation",
+    duration: 1,
+    manufactureDate: Date.now(),
+    disposeDate: Date.now(),
+  },
+  createdBy: mongoose.Types.ObjectId(),
+  createdAt: Date.now(),
+  updatedBy: mongoose.Types.ObjectId(),
+  updatedAt: Date.now(),
+  deletedBy: mongoose.Types.ObjectId(),
+  deletedAt: Date.now(),
+  isArchived: false,
 };
-const sampleEditVendorData = {
-  vendorId: tempVendorId,
-  name: "PT. LTE - edit",
-  city: "BATAM - edit",
-  state: "INA - edit",
-  zipCode: "22222 - edit",
-  accountManagerName: "Tony - edit",
-  accountManagerPhone: "000099998887777 - edit",
+const sampleEditAssetVendorData = {
+  assetVendorId: tempAssetVendorId,
+  asset: mongoose.Types.ObjectId(),
+  vendor: mongoose.Types.ObjectId(),
+  depreciation: {
+    name: "Dummy Depreciation - edit",
+    duration: 1,
+    manufactureDate: Date.now(-2),
+    disposeDate: Date.now(-3),
+  },
+  createdBy: mongoose.Types.ObjectId(),
+  createdAt: Date.now(),
+  updatedBy: mongoose.Types.ObjectId(),
+  updatedAt: Date.now(),
+  deletedBy: mongoose.Types.ObjectId(),
+  deletedAt: Date.now(),
+  isArchived: true,
 };
 
-describe("TESTING /api/vendor", () => {
+describe("TESTING /api/assetVendor", () => {
   // BEFORE TESTING
   before((done) => {
     database
@@ -197,11 +215,11 @@ describe("TESTING /api/vendor", () => {
   // })
 
   describe("[POST]", () => {
-    it("CREATE A VENDOR", (done) => {
+    it("CREATE AN ASSET VENDOR", (done) => {
       request(server)
-        .post("/api/vendor")
+        .post("/api/assetVendor")
         .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
-        .send({ params: sampleVendorData })
+        .send({ params: sampleAssetVendorData })
         .end((err, response) => {
           expect(response.status).to.equal(200);
           expect(response).to.contain.property("text");
@@ -219,9 +237,9 @@ describe("TESTING /api/vendor", () => {
   });
 
   describe("[GET]", () => {
-    it("GET ALL VENDOR LIST", (done) => {
+    it("GET ALL ASSET VENDOR LIST", (done) => {
       request(server)
-        .get("/api/vendor")
+        .get("/api/assetVendor")
         .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
         .end((err, response) => {
           expect(response.status).to.equal(200);
@@ -238,9 +256,9 @@ describe("TESTING /api/vendor", () => {
         });
     });
 
-    it("GET VENDOR LIST BY VENDOR ID", (done) => {
+    it("GET ASSET VENDOR LIST BY ASSET VENDOR ID", (done) => {
       request(server)
-        .get("/api/vendor/" + tempVendorId)
+        .get("/api/assetVendor/" + tempAssetVendorId)
         .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
         .end((err, response) => {
           expect(response.status).to.equal(200);
@@ -259,11 +277,11 @@ describe("TESTING /api/vendor", () => {
   });
 
   describe("[PUT]", () => {
-    it("UPDATE A VENDOR", (done) => {
+    it("UPDATE AN ASSET VENDOR", (done) => {
       request(server)
-        .put("/api/vendor")
+        .put("/api/assetVendor")
         .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
-        .send({ params: sampleEditVendorData })
+        .send({ params: sampleEditAssetVendorData })
         .end((err, response) => {
           expect(response.status).to.equal(200);
           expect(response).to.contain.property("text");
@@ -283,7 +301,7 @@ describe("TESTING /api/vendor", () => {
   describe("[DELETE]", () => {
     it("DELETE A VENDOR", (done) => {
       request(server)
-        .delete("/api/vendor/" + tempVendorId)
+        .delete("/api/assetVendor/" + tempAssetVendorId)
         .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
         .end((err, response) => {
           expect(response.status).to.equal(200);

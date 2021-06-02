@@ -49,8 +49,8 @@ Router.post("/", async (req, res) => {
     if (!req.body.params) {
       return res.status(400).send("Asset Vendor parameter not found");
     }
-    if (!req.body.params.name) {
-      return res.status(400).send("Name not found");
+    if (!req.body.params.asset) {
+      return res.status(400).send("Asset not found");
     }
 
     const data = await assetVendorController.InsertAssetVendor(req.body.params);
@@ -76,8 +76,8 @@ Router.put("/", async (req, res) => {
     if (!req.body.params.assetVendorId) {
       return res.status(400).send("Asset Vendor id not found");
     }
-    if (!req.body.params.name) {
-      return res.status(400).send("Name not found");
+    if (!req.body.params.asset) {
+      return res.status(400).send("Asset not found");
     }
 
     const data = await assetVendorController.UpdateAssetVendor(req.body.params);
