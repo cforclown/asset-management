@@ -53,7 +53,9 @@ Router.post("/", async (req, res) => {
       return res.status(400).send("Name not found");
     }
 
-    const data = await assetSuperTypeController.InsertAssetSuperType(req.body);
+    const data = await assetSuperTypeController.InsertAssetSuperType(
+      req.body.params
+    );
 
     if (!data) {
       return res.send
@@ -80,7 +82,9 @@ Router.put("/", async (req, res) => {
       return res.status(400).send("Name not found");
     }
 
-    const data = await assetSuperTypeController.UpdateAssetSuperType(req.body);
+    const data = await assetSuperTypeController.UpdateAssetSuperType(
+      req.body.params
+    );
 
     if (!data) {
       return res.send
@@ -163,7 +167,7 @@ module.exports = Router;
  *              content:
  *                  application/json:
  *                      schema:
- *                          $ref: '#/components/schemas/assetSuperTypeData'
+ *                          $ref: '#/components/schemas/editAssetSuperTypeData'
  * /api/assetSuperType/{assetSuperTypeId}}:
  *      get:
  *          tags:

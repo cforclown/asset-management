@@ -12,6 +12,10 @@ const userModel = require("../src/database/model/user.model").Model;
 const roleModel = require("../src/database/model/role.model").Model;
 const global = require("../src/global/global");
 
+const mongoose = require("mongoose");
+
+const tempVendorId = mongoose.Types.ObjectId();
+
 const userAdmin = {
   username: "admin",
   password: "admin",
@@ -34,6 +38,24 @@ var sampleUserData = {
   email: "haha@gmail.com",
   fullname: "haha@gmail.com",
   role: null,
+};
+const sampleVendorData = {
+  _id: tempVendorId,
+  name: "PT. LTE",
+  city: "BATAM",
+  state: "INA",
+  zipCode: "22222",
+  accountManagerName: "Tony",
+  accountManagerPhone: "000099998887777",
+};
+const sampleEditVendorData = {
+  vendorId: tempVendorId,
+  name: "PT. LTE - edit",
+  city: "BATAM - edit",
+  state: "INA - edit",
+  zipCode: "22222 - edit",
+  accountManagerName: "Tony - edit",
+  accountManagerPhone: "000099998887777 - edit",
 };
 
 describe("TESTING /api/vendor", () => {
@@ -174,8 +196,30 @@ describe("TESTING /api/vendor", () => {
   // afterEach(done=>{
   // })
 
+  describe("[POST]", () => {
+    it("CREATE A VENDOR", (done) => {
+      request(server)
+        .post("/api/vendor")
+        .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
+        .send({ params: sampleVendorData })
+        .end((err, response) => {
+          expect(response.status).to.equal(200);
+          expect(response).to.contain.property("text");
+
+          const body = JSON.parse(response.text);
+          expect(body).to.be.an("object");
+          expect(body).to.contain.property("data");
+
+          const data = body.data;
+          expect(data).to.be.an("object");
+
+          done();
+        });
+    });
+  });
+
   describe("[GET]", () => {
-    it("GET VENDOR LIST", (done) => {
+    it("GET ALL VENDOR LIST", (done) => {
       request(server)
         .get("/api/vendor")
         .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
@@ -189,6 +233,69 @@ describe("TESTING /api/vendor", () => {
 
           const data = body.data;
           expect(data).to.be.an("array");
+
+          done();
+        });
+    });
+
+    it("GET VENDOR LIST BY VENDOR ID", (done) => {
+      request(server)
+        .get("/api/vendor/" + tempVendorId)
+        .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
+        .end((err, response) => {
+          expect(response.status).to.equal(200);
+          expect(response).to.contain.property("text");
+
+          const body = JSON.parse(response.text);
+          expect(body).to.be.an("object");
+          expect(body).to.contain.property("data");
+
+          const data = body.data;
+          expect(data).to.be.an("object");
+
+          done();
+        });
+    });
+  });
+
+  describe("[PUT]", () => {
+    it("UPDATE A VENDOR", (done) => {
+      request(server)
+        .put("/api/vendor")
+        .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
+        .send({ params: sampleEditVendorData })
+        .end((err, response) => {
+          expect(response.status).to.equal(200);
+          expect(response).to.contain.property("text");
+
+          const body = JSON.parse(response.text);
+          expect(body).to.be.an("object");
+          expect(body).to.contain.property("data");
+
+          const data = body.data;
+          expect(data).to.be.an("object");
+
+          done();
+        });
+    });
+  });
+
+  describe("[DELETE]", () => {
+    it("DELETE A VENDOR", (done) => {
+      request(server)
+        .delete("/api/vendor/" + tempVendorId)
+        .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
+        .send({ params: sampleEditVendorData })
+        .end((err, response) => {
+          expect(response.status).to.equal(200);
+          expect(response).to.contain.property("text");
+
+          const body = JSON.parse(response.text);
+          expect(body).to.be.an("object");
+          expect(body).to.contain.property("data");
+
+          const data = body.data;
+          expect(data).to.be.an("object");
 
           done();
         });

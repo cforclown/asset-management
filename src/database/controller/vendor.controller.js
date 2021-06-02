@@ -54,12 +54,6 @@ exports.UpdateVendor = async function (params) {
     },
     {
       $set: {
-        // name: params.name,
-        // city: params.city,
-        // state: params.state,
-        // zipCode: params.zipCode,
-        // accountManagerName: params.accountManagerName,
-        // accountManagerPhone: params.accountManagerPhone,
         ...params,
       },
     }

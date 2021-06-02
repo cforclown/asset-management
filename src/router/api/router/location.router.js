@@ -53,7 +53,7 @@ Router.post("/", async (req, res) => {
       return res.status(400).send("Name not found");
     }
 
-    const data = await locationController.InsertLocation(req.body);
+    const data = await locationController.InsertLocation(req.body.params);
 
     if (!data) {
       return res.send
@@ -80,7 +80,7 @@ Router.put("/", async (req, res) => {
       return res.status(400).send("Name not found");
     }
 
-    const data = await locationController.UpdateLocation(req.body);
+    const data = await locationController.UpdateLocation(req.body.params);
 
     if (!data) {
       return res.send
@@ -161,7 +161,7 @@ module.exports = Router;
  *              content:
  *                  application/json:
  *                      schema:
- *                          $ref: '#/components/schemas/locationData'
+ *                          $ref: '#/components/schemas/editLocationData'
  * /api/location/{locationId}}:
  *      get:
  *          tags:

@@ -51,7 +51,7 @@ Router.post("/", async (req, res) => {
       return res.status(400).send("Name not found");
     }
 
-    const data = await assetController.InsertAsset(req.body);
+    const data = await assetController.InsertAsset(req.body.params);
 
     if (!data) {
       return res.send
@@ -78,7 +78,7 @@ Router.put("/", async (req, res) => {
       return res.status(400).send("Name not found");
     }
 
-    const data = await assetController.UpdateAsset(req.body);
+    const data = await assetController.UpdateAsset(req.body.params);
 
     if (!data) {
       return res.send
@@ -159,7 +159,7 @@ module.exports = Router;
  *              content:
  *                  application/json:
  *                      schema:
- *                          $ref: '#/components/schemas/assetData'
+ *                          $ref: '#/components/schemas/editAssetData'
  * /api/asset/{assetId}}:
  *      get:
  *          tags:

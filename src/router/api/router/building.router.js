@@ -53,7 +53,7 @@ Router.post("/", async (req, res) => {
       return res.status(400).send("Name not found");
     }
 
-    const data = await buildingController.InsertBuilding(req.body);
+    const data = await buildingController.InsertBuilding(req.body.params);
 
     if (!data) {
       return res.send
@@ -80,7 +80,7 @@ Router.put("/", async (req, res) => {
       return res.status(400).send("Name not found");
     }
 
-    const data = await buildingController.UpdateBuilding(req.body);
+    const data = await buildingController.UpdateBuilding(req.body.params);
 
     if (!data) {
       return res.send
@@ -161,7 +161,7 @@ module.exports = Router;
  *              content:
  *                  application/json:
  *                      schema:
- *                          $ref: '#/components/schemas/buildingData'
+ *                          $ref: '#/components/schemas/editBuildingData'
  * /api/building/{buildingId}}:
  *      get:
  *          tags:

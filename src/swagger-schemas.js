@@ -1,3 +1,79 @@
+const assetData = {
+  name: { type: "string" },
+  brandName: { type: "string" },
+  modelNumber: { type: "string" },
+  desc: { type: "string" },
+  assetType: { type: "string" },
+  createdBy: { type: "string" },
+  createdAt: { type: "date" },
+  updatedBy: { type: "string" },
+  updatedAt: { type: "date" },
+  deletedBy: { type: "string" },
+  deletedAt: { type: "date" },
+};
+
+const assetSuperTypeData = {
+  name: { type: "string" },
+  desc: { type: "string" },
+};
+
+const assetTypeData = {
+  name: { type: "string" },
+  desc: { type: "string" },
+  assetSuperType: { type: "string" },
+  defaultDepreciationDuration: { type: "Number" },
+};
+
+const assetVendorData = {
+  asset: { type: "string" },
+  vendor: { type: "string" },
+  depreciation: {
+    type: "object",
+    properties: {
+      name: { type: "string" },
+      duration: { type: "Number" },
+      manufactureDate: { type: "Date" },
+      disposeDate: { type: "Date" },
+    },
+  },
+  createdBy: { type: "string" },
+  createdAt: { type: "date" },
+  updatedBy: { type: "string" },
+  updatedAt: { type: "date" },
+  deletedBy: { type: "string" },
+  deletedAt: { type: "date" },
+  isArchived: { type: "Boolean", default: false },
+};
+
+const buildingData = {
+  name: { type: "string" },
+  desc: { type: "string" },
+  city: { type: "string" },
+  state: { type: "string" },
+  zipCode: { type: "string" },
+  address: { type: "string" },
+};
+
+const employeeData = {
+  fullname: { type: "string" },
+  location: { type: "string" },
+};
+
+const locationData = {
+  name: { type: "string" },
+  desc: { type: "string" },
+  building: { type: "string" },
+};
+
+const vendorData = {
+  name: { type: "string" },
+  city: { type: "string" },
+  state: { type: "string" },
+  zipCode: { type: "string" },
+  accountManagerName: { type: "string" },
+  accountManagerPhone: { type: "string" },
+};
+
 module.exports = {
   registerData: {
     type: "object",
@@ -84,100 +160,115 @@ module.exports = {
   assetData: {
     type: "object",
     properties: {
-      name: { type: "string" },
-      brandName: { type: "string" },
-      modelNumber: { type: "string" },
-      desc: { type: "string" },
-      assetType: { type: "string" },
-      createdBy: { type: "string" },
-      createdAt: { type: "date" },
-      updatedBy: { type: "string" },
-      updatedAt: { type: "date" },
-      deletedBy: { type: "string" },
-      deletedAt: { type: "date" },
+      ...assetData,
+    },
+  },
+  editAssetData: {
+    type: "object",
+    properties: {
+      assetId: { type: "string" },
+      ...assetData,
     },
   },
 
   assetSuperTypeData: {
     type: "object",
     properties: {
-      name: { type: "string" },
-      desc: { type: "string" },
+      ...assetSuperTypeData,
+    },
+  },
+  editAssetSuperTypeData: {
+    type: "object",
+    properties: {
+      assetSuperTypeId: { type: "string" },
+      ...assetSuperTypeData,
     },
   },
 
   assetTypeData: {
     type: "object",
     properties: {
-      name: { type: "string" },
-      desc: { type: "string" },
-      assetSuperType: { type: "string" },
-      defaultDepreciationDuration: { type: "Number" },
+      ...assetTypeData,
+    },
+  },
+
+  editAssetTypeData: {
+    type: "object",
+    properties: {
+      assetTypeId: { type: "string" },
+      ...assetTypeData,
     },
   },
 
   assetVendorData: {
     type: "object",
     properties: {
-      asset: { type: "string" },
-      vendor: { type: "string" },
-      depreciation: {
-        type: "object",
-        properties: {
-          name: { type: "string" },
-          duration: { type: "Number" },
-          manufactureDate: { type: "Date" },
-          disposeDate: { type: "Date" },
-        },
-      },
-      createdBy: { type: "string" },
-      createdAt: { type: "date" },
-      updatedBy: { type: "string" },
-      updatedAt: { type: "date" },
-      deletedBy: { type: "string" },
-      deletedAt: { type: "date" },
-      isArchived: { type: "Boolean", default: false },
+      ...assetVendorData,
+    },
+  },
+
+  editAssetVendorData: {
+    type: "object",
+    properties: {
+      assetVendorId: { type: "string" },
+      ...assetVendorData,
     },
   },
 
   buildingData: {
     type: "object",
     properties: {
-      name: { type: "string" },
-      desc: { type: "string" },
-      city: { type: "string" },
-      state: { type: "string" },
-      zipCode: { type: "string" },
-      address: { type: "string" },
+      ...buildingData,
+    },
+  },
+
+  editBuildingData: {
+    type: "object",
+    properties: {
+      ...buildingData,
     },
   },
 
   employeeData: {
     type: "object",
     properties: {
-      fullname: { type: "string" },
-      location: { type: "string" },
+      ...employeeData,
+    },
+  },
+  editEmployeeData: {
+    type: "object",
+    properties: {
+      employeeId: { type: "string" },
+      ...employeeData,
     },
   },
 
   locationData: {
     type: "object",
     properties: {
-      name: { type: "string" },
-      desc: { type: "string" },
-      building: { type: "string" },
+      ...locationData,
+    },
+  },
+
+  editLocationData: {
+    type: "object",
+    properties: {
+      locationId: { type: "string" },
+      ...locationData,
     },
   },
 
   vendorData: {
     type: "object",
     properties: {
-      name: { type: "string" },
-      city: { type: "string" },
-      state: { type: "string" },
-      zipCode: { type: "string" },
-      accountManagerName: { type: "string" },
-      accountManagerPhone: { type: "string" },
+      ...vendorData,
+    },
+  },
+  editVendorData: {
+    type: "object",
+    properties: {
+      vendorId: { type: "string" },
+      ...vendorData,
     },
   },
 };
