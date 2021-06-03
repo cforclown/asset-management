@@ -101,7 +101,9 @@ Router.delete("/:assetTypeId", async (req, res) => {
       return res.status(400).send("Asset type id not found");
     }
 
-    const data = await assetTypeController.DeleteAsset(req.params.assetTypeId);
+    const data = await assetTypeController.DeleteAssetType(
+      req.params.assetTypeId
+    );
 
     if (!data) {
       return res.send

@@ -13,7 +13,7 @@ const global = require("../src/global/global");
 
 const mongoose = require("mongoose");
 
-const tempAssetTypeId = mongoose.Types.ObjectId();
+const tempAssetSuperTypeId = mongoose.Types.ObjectId();
 
 const userAdmin = {
   username: "admin",
@@ -38,22 +38,18 @@ var sampleUserData = {
   fullname: "haha@gmail.com",
   role: null,
 };
-const sampleAssetTypeData = {
-  _id: tempAssetTypeId,
+const sampleAssetSuperTypeData = {
+  _id: tempAssetSuperTypeId,
   name: "TABLE",
   desc: "table asset super type",
-  assetSuperType: mongoose.Types.ObjectId(),
-  defaultDepreciationDuration: 100,
 };
-const sampleEditAssetTypeData = {
-  assetTypeId: tempAssetTypeId,
+const sampleEditAssetSuperTypeData = {
+  assetSuperTypeId: tempAssetSuperTypeId,
   name: "TABLE - edit",
   desc: "table asset super type - edit",
-  assetSuperType: mongoose.Types.ObjectId(),
-  defaultDepreciationDuration: 200,
 };
 
-describe("TESTING /api/assetType", () => {
+describe("TESTING /api/assetSuperType", () => {
   // BEFORE TESTING
   before((done) => {
     database
@@ -192,11 +188,11 @@ describe("TESTING /api/assetType", () => {
   // })
 
   describe("[POST]", () => {
-    it("CREATE AN ASSET TYPE", (done) => {
+    it("CREATE AN ASSET SUPER TYPE", (done) => {
       request(server)
-        .post("/api/assetType")
+        .post("/api/assetSuperType")
         .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
-        .send({ params: sampleAssetTypeData })
+        .send({ params: sampleAssetSuperTypeData })
         .end((err, response) => {
           expect(response.status).to.equal(200);
           expect(response).to.contain.property("text");
@@ -214,9 +210,9 @@ describe("TESTING /api/assetType", () => {
   });
 
   describe("[GET]", () => {
-    it("GET ALL ASSET TYPE LIST", (done) => {
+    it("GET ALL ASSET SUPER TYPE LIST", (done) => {
       request(server)
-        .get("/api/assetType")
+        .get("/api/assetSuperType")
         .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
         .end((err, response) => {
           expect(response.status).to.equal(200);
@@ -233,9 +229,9 @@ describe("TESTING /api/assetType", () => {
         });
     });
 
-    it("GET ASSET TYPE BY ASSET TYPE ID", (done) => {
+    it("GET ASSET SUPER TYPE BY ASSET SUPER TYPE ID", (done) => {
       request(server)
-        .get("/api/assetType/" + tempAssetTypeId)
+        .get("/api/assetSuperType/" + tempAssetSuperTypeId)
         .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
         .end((err, response) => {
           expect(response.status).to.equal(200);
@@ -254,11 +250,11 @@ describe("TESTING /api/assetType", () => {
   });
 
   describe("[PUT]", () => {
-    it("UPDATE AN ASSET TYPE", (done) => {
+    it("UPDATE AN ASSET SUPER TYPE", (done) => {
       request(server)
-        .put("/api/assetType")
+        .put("/api/assetSuperType")
         .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
-        .send({ params: sampleEditAssetTypeData })
+        .send({ params: sampleEditAssetSuperTypeData })
         .end((err, response) => {
           expect(response.status).to.equal(200);
           expect(response).to.contain.property("text");
@@ -276,9 +272,9 @@ describe("TESTING /api/assetType", () => {
   });
 
   describe("[DELETE]", () => {
-    it("DELETE AN ASSET TYPE", (done) => {
+    it("DELETE AN ASSET SUPER TYPE", (done) => {
       request(server)
-        .delete("/api/assetType/" + tempAssetTypeId)
+        .delete("/api/assetSuperType/" + tempAssetSuperTypeId)
         .set({ Authorization: `Bearer ${userAdmin.accessToken}` })
         .end((err, response) => {
           expect(response.status).to.equal(200);
