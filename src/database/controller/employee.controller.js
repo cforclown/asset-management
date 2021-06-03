@@ -28,8 +28,8 @@ exports.GetEmployeeById = async function (employeeId) {
 };
 
 exports.InsertEmployee = async function (params) {
-  if (!params.name) {
-    return global.ErrorBadRequest("Name not found");
+  if (!params.fullname) {
+    return global.ErrorBadRequest("Fullname not found");
   }
 
   const employeeData = new employeeModel({
@@ -44,8 +44,8 @@ exports.UpdateEmployee = async function (params) {
   if (!params.employeeId) {
     return global.ErrorBadRequest("Employee id not found");
   }
-  if (!params.name) {
-    return global.ErrorBadRequest("Name not found");
+  if (!params.fullname) {
+    return global.ErrorBadRequest("Fullname not found");
   }
 
   const data = await employeeModel.updateOne(

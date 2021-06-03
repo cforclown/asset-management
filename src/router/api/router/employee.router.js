@@ -49,8 +49,8 @@ Router.post("/", async (req, res) => {
     if (!req.body.params) {
       return res.status(400).send("Employee parameter not found");
     }
-    if (!req.body.params.name) {
-      return res.status(400).send("Name not found");
+    if (!req.body.params.fullname) {
+      return res.status(400).send("Fullname not found");
     }
 
     const data = await employeeController.InsertEmployee(req.body.params);
@@ -76,8 +76,8 @@ Router.put("/", async (req, res) => {
     if (!req.body.params.employeeId) {
       return res.status(400).send("Employee id not found");
     }
-    if (!req.body.params.name) {
-      return res.status(400).send("Name not found");
+    if (!req.body.params.fullname) {
+      return res.status(400).send("Fullname not found");
     }
 
     const data = await employeeController.UpdateEmployee(req.body.params);
